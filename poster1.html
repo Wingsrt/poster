@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+ 
+
+<style>
+
+  #name{
+    width: 300px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 30px;
+    margin-left: 40px;
+  }
+
+  #SUBMIT{
+    width: 100px;
+    height: 30px;
+    background-color: chartreuse;
+    border-radius: 30px;
+    border: none;
+  }
+
+
+  .poster{
+    width: 220px;
+    height: 150px;
+  }
+
+
+  #pic{
+    width: 220px;
+    height: 300px;
+    border: 2px solid black;
+    display:flex;
+    flex-direction: column;
+  }
+
+
+
+   
+   
+
+</style>
+<html>
+
+
+<input type="text" id="name"  placeholder="NAME OF MOVIE">
+<button id="SUBMIT" onclick="wow()">SEARCH</button>
+
+<div id="pic"></div>
+<script>
+
+   wow();
+
+async function wow(){
+
+
+  var movie=document.getElementById('name').value;
+  var box=document.getElementById('pic');
+
+
+
+  let res =await fetch(`http://www.omdbapi.com/?t=avenger&apikey=c84b0dd3`)
+
+
+
+ 
+
+
+  let mov= await res.json();
+
+  console.log(mov);
+
+
+
+  var label=document.createElement('h3');
+  var img=document.createElement('img');
+  var label2=document.createElement('label');
+  var label3=document.createElement('label');
+  var label4=document.createElement('label');
+
+
+  label2.innerText=`Released-${mov.Released}`
+  label3.innerText=`year-${mov.Year}`
+  label4.innerText=`Rated-${mov.Rated}`
+
+  img.classList='poster'
+
+
+  img.src=mov.Poster;
+
+  label.innerText=`Name -${mov.Title}`
+
+
+  box.append(img);
+
+  box.append(label);
+  box.append(label2);
+  box.append(label3)
+  box.append(label4)
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  
+
+}
+
+
+
+</script>
+
+
+</html>
