@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<style>
+
+    *{
+        background-color:  #0c111b;
+    }
+    .nav{
+        width: 100%;
+        height: 70px;
+      
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .box{
+        
+        height: 300px;
+        height: 500px;
+       
+    }
+
+    .slidepic{
+        width: 99%;
+        height: 500px;
+     
+    }
+
+    button{
+        color: cornsilk;
+        background:none;
+        border: none;
+        font-size: 14px;
+    }
+
+    .input{
+
+        border: 2px solid wheat;
+        width: 200px;
+        height: 20px;
+        border-radius: 20px;
+        
+
+    }
+
+    .book{
+        display: flex;
+        justify-content: center;
+        width: 300px;
+        background-color: red;
+        border-radius: 20px;
+        border: 2px solid white;
+        position: absolute;
+        top: 20%;
+        margin-left: 30px;
+    } 
+
+    #show{
+        border: 3px solid red;
+        width: 200px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+  
+
+
+</style>
+
+
+<html>
+
+<div class="nav">
+    <img src="https://www.freepnglogos.com/uploads/hotstar-logo-png/hotstar-logo-0.jpg" style="width: 200px;height: 100px;">
+
+    <ul>
+        <input id="input" class="input" placeholder="TYPE">
+        <button onclick="movie()" style="margin-right: 20px;">Search</button>
+        <button style="margin-right: 20px;">HOME</button>
+        <button>ABOUT</button>
+    </ul>
+
+</div>
+<div class="silde" ></div>
+
+<div id="slidebox" ></div>
+
+<div id="show"></div>
+
+
+
+
+<script>
+
+    slide();
+  
+  function slide(){
+   // var pics=["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOcHpmHw67WV1cYcr5gGRUaH42-ZTYMZ-8pw&usqp=CAU"];
+    var pics=[ "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzDlmXs9jKOY_JzNA2koibjU6Pf5c4hOKrhQ&usqp=CAU","https://wallpaperaccess.com/full/4149585.jpg","https://wallpaper.dog/large/698291.jpg"]
+
+    var slidebox=document.getElementById('slidebox');
+    var h1=document.createElement('h1');
+
+    h1.innerText='BOOK NOW';
+    h1.classList='book'
+
+    slidebox.classList='box';
+
+
+    var img=document.createElement('img');
+    img.classList='slidepic'
+
+
+    img.src=pics[0]
+
+
+    slidebox.append(img)
+    slidebox.append(h1)
+
+     var i=1;
+    setInterval(function(){
+
+        img.src=pics[i]
+
+
+    slidebox.append(img)
+    i++;
+    if(i==pics.length){
+        i=0;
+    }
+
+    },2500)
+
+    
+     
+
+      
+
+
+  }  
+
+
+ 
+
+    async function movie(){
+ 
+  
+     //  var movie=document.getElementById('name').value;
+  var box=document.getElementById('show');
+  var input=document.getElementById('input').value;
+ 
+
+
+  let res =await fetch(`http://www.omdbapi.com/?t=${input}&apikey=c84b0dd3`)
+
+
+
+ 
+
+
+  let mov= await res.json();
+
+ 
+
+
+  
+
+
+
+  var label=document.createElement('h3');
+  var img=document.createElement('img');
+  var label2=document.createElement('label');
+
+  var label3=document.createElement('label');
+  var label4=document.createElement('label');
+
+
+  label2.innerText=`Released-${mov.Released}`
+  label3.innerText=`year-${mov.Year}`
+  label4.innerText=`Rated-${mov.Rated}`
+
+  img.classList='poster'
+
+
+  img.src=mov.Poster;
+
+  label.innerText=`Name -${mov.Title}`
+
+
+  label2.style.color="white"
+  label3.style.color="white"
+  label4.style.color="white"
+  label.style.color="white"
+
+
+  box.append(img);
+
+  box.append(label);
+  box.append(label2);
+  box.append(label3)
+  box.append(label4);
+ 
+
+   
+
+     /*   var im=document.createElement('img');
+
+
+        im.src='https://i0.wp.com/cdn.dribbble.com/users/2019005/screenshots/4144899/error-comp.gif'
+        box.append(im)
+
+        
+                
+               console.log("wow")
+   
+    
+*/
+
+    }
+
+
+
+
+
+
+
+
+  
+ 
+
+
+</script>
+
+</html>
+
+
