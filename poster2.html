@@ -87,6 +87,7 @@
 <div id="slidebox" ></div>
 
 <div id="show"></div>
+<div id="r" style="width: 120px;height: 50px;background-color: chartreuse;margin-left: 500px;visibility: hidden;" ></div>
 
 
 
@@ -148,6 +149,7 @@
   
      //  var movie=document.getElementById('name').value;
   var box=document.getElementById('show');
+  var r=document.getElementById('r');
   var input=document.getElementById('input').value;
  
 
@@ -178,7 +180,19 @@
 
   label2.innerText=`Released-${mov.Released}`
   label3.innerText=`year-${mov.Year}`
-  label4.innerText=`Rated-${mov.Rated}`
+  label4.innerText=`Rated-${mov.imdbRating}`
+ 
+  if(mov.imdbRating>4){
+
+
+    r.style.visibility="visible"
+  console.log(mov.imdbRating);
+
+  r.innerText="RECOMENDED"
+   
+    
+
+  }
 
   img.classList='poster'
 
