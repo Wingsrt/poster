@@ -74,3 +74,8 @@ This clone is made with HTML , CSS , NODEjs , js
    -  start program with `npm run div`
 - TO connect the Mongodb 
    - [use this link in connection](mongodb+srv://faasos:${process.env.DATABASE_PASS}@cluster0.onmc8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority)  
+
+
+
+![1pic](https://user-images.githubusercontent.com/86429170/141460216-5f3709fc-4bbd-4e39-8990-03aede255beb.png)
+
